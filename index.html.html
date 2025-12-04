@@ -1,0 +1,805 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Aldi & Putri — Undangan Rustic Boho (Final)</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --brown:#a87c58;
+  --brown-dark:#6d4b33;
+  --cream:#f7efe6;
+  --bg:#f3e9df;
+  --muted:#6b4f3d;
+  --glass: rgba(255,255,255,0.92);
+}
+
+/* reset */
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:"Poppins",sans-serif;
+  background:var(--bg);
+  color:var(--brown-dark);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* sections */
+section{
+  padding:52px 18px;
+  text-align:center;
+}
+h2{
+  font-family:"Playfair Display",serif;
+  font-size:24px;
+  margin:6px 0 10px;
+  color:var(--brown-dark);
+}
+
+/* COVER (smaller height so tidak terpotong) */
+#cover{
+  height:62vh;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  background-color:#000;
+}
+.cover-bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transform-origin:center center;
+  transition:transform 10s ease;
+  filter:brightness(0.46);
+}
+.cover-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(rgba(0,0,0,0.22), rgba(0,0,0,0.36));
+}
+.cover-content{
+  position:relative;
+  z-index:10;
+  color:#fff;
+  text-align:center;
+  max-width:980px;
+  padding:8px 14px;
+}
+.cover-title{
+  font-family:"Playfair Display";
+  font-size:16px;
+  letter-spacing:3px;
+  color:#f7e7b6;
+}
+.cover-names{
+  font-family:"Playfair Display";
+  font-size:30px;
+  margin-top:6px;
+  color:#fff;
+}
+.cover-sub{
+  color:#f0e6cc;
+  margin-top:6px;
+  font-size:14px;
+}
+.btn-open{
+  margin-top:14px;
+  padding:10px 20px;
+  background:var(--brown);
+  color:#fff;
+  border-radius:28px;
+  border:none;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* when cover has .zoom the image gently scales */
+#cover.zoom .cover-bg {
+  transform: scale(1.06);
+}
+
+/* ORNAMENTS (fixed) */
+.ornament{
+  position:fixed;
+  width:110px;
+  opacity:.98;
+  z-index:40;
+  pointer-events:none;
+}
+.orn-left{
+  left:8px;
+  top:20%;
+  transform:translateY(-10%);
+}
+.orn-right{
+  right:8px;
+ top:56%;
+  transform:translateY(-10%);
+}
+.orn-top{
+  left:50%;
+  transform:translate(-50%,-40%);
+  top:6px;
+}
+
+/* MEMPELAI (rounded square avatars) */
+.couple-box{
+  display:flex;
+  gap:24px;
+  justify-content:center;
+  flex-wrap:wrap;
+  align-items:center;
+  margin-top:16px;
+}
+.person{
+  width:240px;
+  text-align:center;
+}
+.avatar{
+  width:150px;
+  height:150px;
+  border-radius:18px;
+  object-fit:cover;
+  border:4px solid var(--brown);
+  box-shadow:0 10px 30px rgba(0,0,0,0.12);
+}
+.person h3{
+  font-family:"Playfair Display";
+  margin:12px 0 6px;
+  font-size:18px;
+  color:var(--brown-dark);
+}
+.person p{
+  font-size:13px;
+  color:#6b4f3d;
+  margin:0;
+}
+
+/* GALERI slider */
+.slider{
+  width:92%;
+  margin:auto;
+  overflow:hidden;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+.slides{
+  display:flex;
+  width:400%;
+  animation:slide 60s infinite linear;
+}
+.slides img{
+  width:100%;
+  object-fit:cover;
+  display:block;
+}
+@keyframes slide{
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-100%); }
+  50% { transform: translateX(-200%); }
+  75% { transform: translateX(-300%); }
+  100% { transform: translateX(0); }
+}
+
+/* COUNTDOWN (boxed) */
+.count-wrap{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:12px;
+}
+.count-box{
+  min-width:68px;
+  background:var(--glass);
+  border-radius:10px;
+  padding:10px 12px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.count-num{
+  font-family:"Playfair Display";
+  font-size:18px;
+  font-weight:700;
+  color:var(--brown-dark);
+}
+.count-label{
+  font-size:11px;
+  color:#6b4f3d;
+  margin-top:4px;
+}
+
+/* OUR STORY video */
+.video-box{
+  width:92%;
+  margin:auto;
+}
+.video-box video{
+  width:100%;
+  border-radius:12px;
+  box-shadow:0 10px 26px rgba(0,0,0,0.10);
+  display:block;
+}
+
+/* GUESTBOOK */
+#ucapan-area{
+  width:92%;
+  margin:14px auto 0;
+  text-align:left;
+}
+.ucapan-input{
+  width:100%;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid #e0d5c7;
+  margin-bottom:10px;
+  font-size:14px;
+  background:#fff;
+  color:#3e2e1e;
+}
+.ucapan-list{
+  margin-top:12px;
+}
+.ucapan-card{
+  background:#fff;
+  padding:12px;
+  border-radius:12px;
+  box-shadow:0 6px 16px rgba(0,0,0,0.06);
+  margin-bottom:10px;
+  color:#4a3b30;
+}
+
+/* REKENING */
+.rekening-box{
+  width:92%;
+  margin:auto;
+  background:#fff;
+  padding:14px;
+  border-radius:12px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.06);
+}
+
+/* MAP container */
+.map-frame{
+  width:92%;
+  margin:auto;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 10px 22px rgba(0,0,0,0.08);
+}
+
+/* BOTTOM NAV icon-only */
+#bottom-nav{
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:14px;
+  background:#fff;
+  padding:10px 18px;
+  border-radius:100px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.12);
+  display:flex;
+  gap:14px;
+  z-index:60;
+}
+.nav-icon{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--cream);
+  color:var(--brown-dark);
+  font-size:20px;
+  text-decoration:none;
+  box-shadow:inset 0 0 6px rgba(0,0,0,0.04);
+}
+
+/* ===== ANIMASI PREMIUM LUXURY WEDDING ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(45px) scale(0.97);
+  filter: blur(6px);
+  transition:
+    opacity 1.2s ease,
+    transform 1.3s cubic-bezier(.21,.55,.21,1),
+    filter 1.3s ease;
+}
+
+/* saat muncul */
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* delay otomatis */
+.reveal.delay-1 { transition-delay: .15s; }
+.reveal.delay-2 { transition-delay: .30s; }
+.reveal.delay-3 { transition-delay: .45s; }
+
+/* small responsive */
+@media(max-width:640px){
+  .person{ width:46%; }
+  .avatar{ width:120px; height:120px; border-radius:14px; }
+  .cover-names{ font-size:24px; }
+  #cover{ height:56vh; }
+  #bottom-nav{ padding:8px 12px; gap:10px; }
+  .nav-icon{ width:40px; height:40px; font-size:18px; }
+}
+</style>
+</head>
+
+<body>
+
+<style>
+body {
+  position: relative;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Background foto + blur + gelap tipis */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("img/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(4px);
+  transform: scale(1.1);
+  /* overlay tipis (gunakan dark overlay agar teks baca) */
+  background-color: rgba(0, 0, 0, 0.28);
+  background-blend-mode: multiply;
+  z-index: -1;
+}
+</style>
+
+<!-- COVER -->
+<section id="cover" class="reveal" aria-label="Cover">
+  <img class="cover-bg" src="img/background.jpg" alt="Opening image">
+  <div class="cover-overlay"></div>
+
+  <div class="cover-content" role="region" aria-label="Pembukaan undangan">
+    <div class="cover-title">THE WEDDING OF</div>
+    <div class="cover-names">Aldi & Putri</div>
+    <div class="cover-sub">Minggu, 28 Desember 2025</div>
+    <button class="btn-open" id="openBtn">Buka Undangan</button>
+  </div>
+</section>
+
+<!-- HOME -->
+<section id="home" class="reveal" aria-labelledby="homeTitle"
+style="
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 18px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+">
+  <hstyle style="font-size:15px;"id="homeTitle">Assalamu'alaikum Wr. Wb. </h2>
+  <p style="font-size:12px;; margin:auto; color:rgb(107,79,61);">
+    Dengan penuh rasa syukur, kami mengundang Bapak/Ibu/Saudara/i untuk hadir pada hari bahagia kami.
+  </p>
+</section>
+
+<!-- MEMPELAI -->
+<section id="mempelai" class="reveal" aria-labelledby="mempelaiTitle"
+style="
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 18px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+">
+  <h2 id="Yang BrrbahagiaTitle">Yang Berbahagia</h2>
+
+  <div class="couple-box" role="group" aria-label="Mempelai">
+    <div class="person" aria-label="Mempelai pria">
+      <img class="avatar" src="img/mempelai-pria.jpg" alt="Aldi">
+      <h3>Aldi</h3>
+      <p>Putra dari Bapak ... & Ibu ...</p>
+    </div>
+
+    <div class="person" aria-label="Mempelai wanita">
+      <img class="avatar" src="img/mempelai-wanita.jpg" alt="Putri">
+      <h3>Putri</h3>
+      <p>Putri dari Bapak ... & Ibu ...</p>
+    </div>
+  </div>
+</section>
+
+<!-- AKAD -->
+<section id="akad" class="reveal" aria-labelledby="akadTitle"
+style="
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 18px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+">
+  <h2 id="akadTitle">Akad Nikah</h2>
+  <p style="font-size:15px;"
+    📅 Minggu, 28 Desember 2025<br>
+    ⏰ 08.00 WIB — selesai<br>
+    📍 Gedung Serbaguna Cendana
+  </p>
+</section>
+
+<!-- RESEPSI -->
+<section id="resepsi" class="reveal" aria-labelledby="resepsiTitle"
+style="
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 18px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+">
+  <h2 id="resepsiTitle">Resepsi</h2>
+  <p style="font-size:15px;"
+    📅 Minggu, 28 Desember 2025<br>
+    ⏰ 11.00 WIB — selesai<br>
+    📍 Gedung Serbaguna Cendana
+  </p>
+</section>
+
+<!-- GALERI -->
+<section id="galeri" class="reveal" aria-labelledby="galeriTitle"
+style="
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 18px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+">
+  <h2 style="font-size:15px;" id="galeriTitle">Galeri Foto</h2>
+
+  <div class="slider" role="region" aria-label="Galeri slide">
+    <div class="slides">
+      <img src="img/gallery1.jpg" alt="Galeri 1">
+      <img src="img/gallery2.jpg" alt="Galeri 2">
+      <img src="img/gallery3.jpg" alt="Galeri 3">
+      <img src="img/gallery4.jpg" alt="Galeri 4">
+    </div>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<section id="countdown" class="reveal" aria-labelledby="countTitle"
+style="
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 18px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+">
+  <h2 id="countTitle">Hitung Mundur</h2>
+
+  <div class="count-wrap" role="status" aria-live="polite">
+    <div class="count-box"><div class="count-num" id="cd-d">0</div><div class="count-label">Hari</div></div>
+    <div class="count-box"><div class="count-num" id="cd-h">00</div><div class="count-label">Jam</div></div>
+    <div class="count-box"><div class="count-num" id="cd-m">00</div><div class="count-label">Menit</div></div>
+    <div class="count-box"><div class="count-num" id="cd-s">00</div><div class="count-label">Detik</div></div>
+  </div>
+</section>
+
+<!-- OUR STORY (video) -->
+<section id="ourstory" class="reveal" aria-labelledby="storyTitle"
+style="
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 18px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+">
+  <h2 id="storyTitle" style="font-family:'Playfair Display',serif;">Our Story</h2>
+
+  <div class="video-box" role="group" aria-label="Video prewedding">
+    <video id="prewedVideo" controls preload="metadata" playsinline>
+      <source src="video/prewweding.mp4" type="video/mp4">
+      Browser Anda tidak mendukung video.
+    </video>
+  </div>
+</section>
+
+<!-- MAP LOKASI -->
+<section id="lokasi" class="fade"
+style="
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 18px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+"> 
+    <h2>Lokasi Acara</h2>
+    <div style="margin-top:20px;">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.0502359973217!2d110.36948887480564!3d-7.887543178874957!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a57f0bce2a72b%3A0xf3c5b1a3fdd2b001!2sGedung%20Serbaguna!5e0!3m2!1sid!2sid!4v1700000000000"
+            width="90%" height="220" style="border:0; border-radius:12px; box-shadow:0 0 12px rgba(0,0,0,0.25);" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <br>
+    <a href="https://maps.google.com" target="_blank" style="padding:10px 20px; background:var(--brown); color:white; border-radius:30px; text-decoration:none;">Buka Maps</a>
+</section>
+
+<!-- GUESTBOOK -->
+<section id="guestbook" class="reveal" aria-labelledby="guestTitle"
+style="
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 18px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+">
+  <h2 id="guestTitle">Buku Tamu</h2>
+
+  <div id="ucapan-area">
+    <input id="guestName" class="ucapan-input" placeholder="Nama Anda" aria-label="Nama Anda">
+    <textarea id="guestMsg" class="ucapan-input" placeholder="Tulis ucapan..." rows="4" aria-label="Ucapan"></textarea>
+
+    <div style="text-align:right;">
+      <button id="sendUcapan" style="background:var(--brown); color:#fff; border:none; padding:8px 14px; border-radius:10px; cursor:pointer;">Kirim</button>
+    </div>
+
+    <div class="ucapan-list" id="listUcapan" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- HADIAH / REKENING -->
+<section id="hadiah" class="reveal" aria-labelledby="hadiahTitle"
+   style="
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 18px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+"> 
+
+  <h2 id="hadiahTitle">Hadiah</h2>
+  
+  <div class="rekening-box" role="region" aria-label="Informasi rekening">
+    <p style="font-size:15px;">Terima kasih atas doa dan kebaikan Anda. Jika ingin mengirim hadiah secara transfer:
+    </p>  
+        <div style="font-weight:700; color:var(--brown-dark);">BRI</div>
+        <div style="font-size:16px; font-weight:600;">1234 5678 9101 2345</div>
+        <div style="color:#6b4f3d;">a.n Aldi</div>
+      </div>
+  </div>
+</section>
+
+<!--------------- THANKS ---------------->
+
+<!-- THANKS -->
+<section id="thanks" class="reveal" aria-labelledby="thanksTitle"
+  style="
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 18px;
+  padding: 1px;
+  margin-top: 20px;
+  margin-bottom : 100px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+">
+  <h2 id="thanksTitle">Terima Kasih</h2>
+  <p style="font-size:12px"
+  >
+    Merupakan kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa terbaik.<br><br>
+    <b>Aldi & Putri</b>
+  </p> 
+  
+  
+  
+</section>
+
+<style class="css">
+/* slider styling (already included above but keeping here for safety) */
+.slider {
+  width: 100%;
+  overflow: hidden;
+}
+.slides {
+  display: flex;
+  width: 100%;
+  animation: slide 60s infinite linear; /* slow cinematic */
+}
+.slides img {
+  width: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+/* Animasi */
+@keyframes slide {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-100%); }
+  50% { transform: translateX(-200%); }
+  75% { transform: translateX(-300%); }
+  100% { transform: translateX(0); }
+}
+</style>
+
+<!-- BOTTOM NAV -->
+<nav id="bottom-nav" role="navigation" aria-label="Navigasi"
+style="
+  background: rgba(250, 250, 250, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 18px;
+  padding: 20px;
+  margin-top: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+">
+  <a class="nav-icon" href="#home" title="Home" aria-label="Home">🏠</a>
+  <a class="nav-icon" href="#mempelai" title="Mempelai" aria-label="Mempelai">👩‍❤️‍👨</a>
+  <a class="nav-icon" href="#galeri" title="Galeri" aria-label="Galeri">🖼️</a>
+  <a class="nav-icon" href="#lokasi" title="Lokasi" aria-label="Lokasi">📍</a>
+</nav>
+
+<!-- MUSIC (start after interaction) -->
+<audio id="bgMusic" preload="autoplay">
+  <source src="music/backsound.mp3" type="audio/mp3">
+</audio>
+
+<button id="musicCtrl" aria-label="Play music"
+  style="position:fixed; right:14px; bottom:96px; z-index:70; background:var(--brown); color:#fff; border:none; padding:10px 12px; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.12); cursor:pointer;">
+  ▶
+</button>
+
+<script>
+/* OPEN cover -> go to home, apply zoom */
+const openBtn = document.getElementById('openBtn');
+if(openBtn){
+  openBtn.addEventListener('click', ()=>{
+    document.getElementById('home').scrollIntoView({behavior:'smooth'});
+    document.getElementById('cover').classList.add('zoom');
+    ensureMusicStart();
+  });
+}
+
+/* MUSIC control */
+const bgMusic = document.getElementById('bgMusic');
+const musicCtrl = document.getElementById('musicCtrl');
+let musicPlaying = false;
+
+function ensureMusicStart(){
+  if(!musicPlaying){
+    bgMusic.play().catch(()=>{ /* autoplay blocked */ });
+    musicPlaying = true;
+    if(musicCtrl) musicCtrl.textContent = '⏸';
+  }
+}
+
+if(musicCtrl){
+  musicCtrl.addEventListener('click', ()=>{
+    if(musicPlaying){
+      bgMusic.pause();
+      musicPlaying=false;
+      musicCtrl.textContent='▶';
+    } else {
+      bgMusic.play().catch(()=>{});
+      musicPlaying=true;
+      musicCtrl.textContent='⏸';
+    }
+  });
+}
+
+// safety: start music on first user click anywhere
+document.addEventListener('click', function once(){
+  ensureMusicStart();
+  document.removeEventListener('click', once);
+}, {passive:true});
+
+/* COUNTDOWN */
+const target = new Date("Dec 28, 2025 08:00:00").getTime();
+function updateCountdown(){
+  const now = Date.now();
+  let diff = target - now;
+  if(diff < 0) diff = 0;
+
+  const d = Math.floor(diff/(1000*60*60*24));
+  const h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  const m = Math.floor((diff%(1000*60*60))/(1000*60));
+  const s = Math.floor((diff%(1000*60))/1000);
+
+  document.getElementById('cd-d').textContent = d;
+  document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+/* GUESTBOOK */
+const sendBtn = document.getElementById('sendUcapan');
+if(sendBtn){
+  sendBtn.addEventListener('click', function(){
+    const n = document.getElementById('guestName').value.trim();
+    const m = document.getElementById('guestMsg').value.trim();
+    if(!n || !m) { alert('Mohon isi nama & ucapan.'); return; }
+
+    const list = document.getElementById('listUcapan');
+    const el = document.createElement('div');
+    el.className = 'ucapan-card';
+    el.innerHTML = `<strong>${escapeHtml(n)}</strong><div style="margin-top:6px;">${escapeHtml(m)}</div>`;
+    list.prepend(el);
+
+    document.getElementById('guestName').value='';
+    document.getElementById('guestMsg').value='';
+  });
+}
+function escapeHtml(s){
+  return s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
+}
+
+/* Ensure ornaments gently float (stagger) */
+document.querySelectorAll('.ornament').forEach((o,i)=>{
+  o.style.transition = `transform ${6 + i*0.8}s ease-in-out`;
+  setInterval(()=>{
+    o.style.transform = `translateY(${(i%2?8:-8)}px)`;
+    setTimeout(()=> o.style.transform = 'translateY(0px)', (6+i*0.8)*500);
+  }, (6+i*0.8)*1000);
+});
+
+/* Accessibility: keyboard nav for bottom nav */
+document.querySelectorAll('#bottom-nav a').forEach(a=>{
+  a.addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter' || e.key === ' ') a.click();
+  });
+});
+
+/* ===== SCROLL REVEAL PREMIUM ===== */
+const observerLuxury = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach((sec,i)=>{
+  sec.classList.add(`delay-${(i % 3) + 1}`); // delay otomatis
+  observerLuxury.observe(sec);
+});
+</script>
+
+</body>
+</html>
